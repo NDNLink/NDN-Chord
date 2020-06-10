@@ -1,0 +1,76 @@
+## -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
+
+def build(bld):
+    module = bld.create_ns3_module('applications', ['internet', 'config-store','stats'])
+    module.source = [
+        'model/bulk-send-application.cc',
+        'model/onoff-application.cc',
+        'model/packet-sink.cc',
+        'model/udp-client.cc',
+        'model/udp-server.cc',
+        'model/seq-ts-header.cc',
+        'model/udp-trace-client.cc',
+        'model/packet-loss-counter.cc',
+        'model/udp-echo-client.cc',
+        'model/udp-echo-server.cc',
+        'model/application-packet-probe.cc',
+        'helper/bulk-send-helper.cc',
+        'helper/on-off-helper.cc',
+        'helper/packet-sink-helper.cc',
+        'helper/udp-client-server-helper.cc',
+        'helper/udp-echo-helper.cc',
+        'model/chord-identifier.cc',
+        'model/chord-ipv4.cc',
+        'model/chord-message.cc',
+        'model/chord-node.cc',
+        'model/chord-node-table.cc',
+        'model/chord-transaction.cc',
+        'model/chord-vnode.cc',
+        'model/dhash-connection.cc',
+        'model/dhash-ipv4.cc',
+        'model/dhash-message.cc',
+        'model/dhash-object.cc',
+        'model/dhash-transaction.cc',
+	'helper/chord-ipv4-helper.cc',
+        ]
+
+    applications_test = bld.create_ns3_module_test_library('applications')
+    applications_test.source = [
+        'test/udp-client-server-test.cc',
+        ]
+
+    headers = bld(features='ns3header')
+    headers.module = 'applications'
+    headers.source = [
+        'model/bulk-send-application.h',
+        'model/onoff-application.h',
+        'model/packet-sink.h',
+        'model/udp-client.h',
+        'model/udp-server.h',
+        'model/seq-ts-header.h',
+        'model/udp-trace-client.h',
+        'model/packet-loss-counter.h',
+        'model/udp-echo-client.h',
+        'model/udp-echo-server.h',
+        'model/application-packet-probe.h',
+        'helper/bulk-send-helper.h',
+        'helper/on-off-helper.h',
+        'helper/packet-sink-helper.h',
+        'helper/udp-client-server-helper.h',
+        'helper/udp-echo-helper.h',
+        'model/chord-identifier.h',
+        'model/chord-ipv4.h',
+        'model/chord-message.h',
+        'model/chord-node.h',
+        'model/chord-node-table.h',
+        'model/chord-transaction.h',
+        'model/chord-vnode.h',
+        'model/dhash-connection.h',
+        'model/dhash-ipv4.h',
+        'model/dhash-message.h',
+        'model/dhash-object.h',
+        'model/dhash-transaction.h',
+        'helper/chord-ipv4-helper.h',
+        ]
+
+    bld.ns3_python_bindings()
