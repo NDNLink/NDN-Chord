@@ -13,6 +13,7 @@ import xml.dom.minidom
 import shutil
 import re
 
+
 from utils import get_list_from_file
 
 try:
